@@ -136,6 +136,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\EmailSender.cs" />
+    <Compile Include="Services\GeneradorInformes.cs" />
+    <Compile Include="Services\IEmailSender.cs" />
     <Compile Include="Services\Injector.cs" />
     <Compile Include="Models\Alumnos.cs" />
     <Compile Include="Models\Cursos.cs" />
