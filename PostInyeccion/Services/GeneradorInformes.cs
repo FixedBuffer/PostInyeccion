@@ -4,20 +4,20 @@ using System.Linq;
 
 namespace PostInyeccion.Services
 {
-    internal class GeneradorInformes
+    public class GeneradorInformes : IGeneradorInformes
     {
         //Dependencias Inyectadas
         PostDbContext _contexto;
         IEmailSender _emailSender;
 
         //Inyectamos las dependencias en el constructor
-        internal GeneradorInformes(PostDbContext contexto, IEmailSender emailSender)
+        public GeneradorInformes(PostDbContext contexto, IEmailSender emailSender)
         {
             _contexto = contexto;
             _emailSender = emailSender;
         }
 
-        internal void GenerarInforme()
+        public void GenerarInforme()
         {
             var profesores = _contexto.Profesores.Include(x => x.Cursos)
                                                 .ThenInclude(x => x.Alumnos).ToList();

@@ -15,11 +15,12 @@ namespace PostInyeccion
             serviceCollection.AddDbContext<PostDbContext>(options=>
                 options.UseMySql("Server=localhost;Database=postefcore;Uid=root;Pwd=root;"));
             //Registramos el EmailSender
-            serviceCollection.AddScoped<IEmailSender, EmailSender>();
+            serviceCollection.AddSingleton<IEmailSender, EmailSender>();
+            serviceCollection.AddSingleton<IGeneradorInformes, GeneradorInformes>();
 
             Injector.GenerarProveedor(serviceCollection);
-
-            GeneradorInformes generador = new GeneradorInformes(Injector.GetService<PostDbContext>(), Injector.GetService<IEmailSender>());    
+            //Obtengo clase desde el IOC
+            IGeneradorInformes generador = Injector.GetService<IGeneradorInformes>();    
             generador.GenerarInforme();
         }
     }   

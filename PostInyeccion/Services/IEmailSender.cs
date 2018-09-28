@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PostInyeccion.Services
 {
-    interface IEmailSender
+    public interface IEmailSender
     {
         bool Enviar(List<Profesores> profesores);
     }
